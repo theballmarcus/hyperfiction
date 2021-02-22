@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script> 
+        function htmlDecode(input){
+        var e = document.createElement('div');
+        e.innerHTML = input;
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+        }
+        var story = JSON.parse(htmlDecode("<%= JSON.stringify(story) %>"));
+    </script>
+</head> 
+<body>
+    <h1>Hyperfiction story</h1>
+    <table id="storytable" style="width:100%;"></table> 
+    <script>
+        var table = document.getElementById('storytable');
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+
+        if( [0]) for (let i = 0; i < Object.keys(story[0]).length; i++) {
+
+            let th = document.createElement("th");
+            rows = Object.keys(instruments[0])
+            let text = document.createTextNode(rows[i]);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+
+        for (let element of story) {
+            let row = table.insertRow();
+            if(element.manual) row.setAttribute("onclick", `relocate("/${element.chapter}.pdf")`)
+            for (key in element) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
+        } 
+        function relocate(manual) {
+            window.location = manual;
+        }
+            </script>
+    <style>
+#storytable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#storytable td, #storytable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#storytable tr:nth-child(even){background-color: #f2f2f2;}
+
+#storytable tr:hover {background-color: #ddd;}
+
+#storytable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #313131;
+  color: white;
+}
+    </style>
+</body>
+</html>

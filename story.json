@@ -1,0 +1,26 @@
+[
+    {
+        "chapter" : "dog chapter",
+        "story" : "you see dogs everywhere",
+        "choices" : [
+            {        
+                "chapter" : "cat chapter",
+                "story" : "you see cats everywhere",
+                "choices" : [
+                    {}
+            ]},
+            {        
+                "chapter" : "giraffe chapter",
+                "story" : "you see giraffe everywhere",
+                "choices" : [
+                    {}
+            ]},
+            {        
+                "chapter" : "cow chapter",
+                "story" : "you see cows everywhere",
+                "choices" : [
+                    {}
+            ]}
+        ]
+    }
+]
